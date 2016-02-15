@@ -7,10 +7,10 @@ def int_or_str(age, nationality)
     us_age(age)
   elsif age.to_i.to_s == age && (nationality.downcase == "brit" || nationality.downcase == "uk")
       uk_age(age)
-  elsif age.downcase == "quit" || nationality.downcase == "quit"
+  elsif age.downcase == "quit"
     "See ya!"
-  elsif age.to_i.to_s != age || nationality.to_i.to_s == "0"
-    puts "You goofed on one of those answers. Try again. Type 'quit' on nationality question to exit program."
+  elsif age.to_i.to_s != age || (nationality.to_i.to_s == "0" || nationality == nationality.to_i)
+    puts "You goofed on one of those answers. Try again. Type 'quit' on age question to exit program."
     system("say -v ralph #{bad_answer}")
     puts "How old are you?:"
     age = gets.chomp
