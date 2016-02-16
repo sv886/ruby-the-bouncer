@@ -2,18 +2,18 @@
 def int_or_str(age, nationality)
   old = "How old are you"
   nat = "American or Brit"
-  bad_answer = "You goofed on one of those answers. Try again."
+  bad_answer = "You goofed on one of those answers. Try again. Enter quit for either question to exit program."
   bye = "See ya!"
 
   if age.to_i.to_s == age && (nationality.downcase == "american" || nationality.downcase == "us")
     us_age(age)
   elsif age.to_i.to_s == age && (nationality.downcase == "brit" || nationality.downcase == "uk")
-      uk_age(age)
-  elsif age.downcase == "quit"
+    uk_age(age)
+  elsif age.downcase == "quit" || nationality.downcase == "quit"
     puts "See ya!"
     system("say -v ralph #{bye}")
-  elsif age.to_i.to_s != age || (nationality.to_i.to_s == "0" || nationality == nationality.to_i)
-    puts "You goofed on one of those answers. Try again. Type 'quit' on both questions to exit program."
+  elsif age.to_i.to_s != age || (nationality != "american" || nationality != "us" ||nationality != "brit" ||nationality != "uk")
+    puts "You goofed on one of those answers. Try again. Enter 'quit' for either question to exit program."
     system("say -v ralph #{bad_answer}")
     puts "How old are you?:"
     system("say -v ralph #{old}")
@@ -60,7 +60,7 @@ def uk_age(age)
   nat = "American or Brit"
   young = "Nada!"
   ask = "Did your parents say it was ok to drink?"
-  ok = "Ok have fun"
+  ok = "Party on, Garth."
   no = "Come back in a couple years, ol chap."
   eighteen = "You can drink. Good on ya."
 
@@ -72,7 +72,7 @@ def uk_age(age)
         system("say -v ralph #{ask}")
         answer = gets.chomp
         if answer.downcase == "y" || answer.downcase == "yes"
-          puts "Ok have fun"
+          puts "Party on, Garth."
           system("say -v ralph #{ok}")
         else
           puts "Come back in a couple years, ol' chap."
